@@ -1,0 +1,42 @@
+[keyboard]
+name = "Keybow2040_T9"
+product_name = "Keybow2040_T9"
+vendor_id = 0x4c4b
+product_id = 0x4643
+manufacturer = "RMK"
+chip = "rp2040"
+
+[rmk]
+tap_dance_max_num = 16
+tap_dance_max_tap = 5
+
+[storage]
+clear_storage = true
+
+[matrix]
+matrix_type = "direct_pin"
+direct_pins = [
+    ["PIN_18", "PIN_14", "PIN_10", "PIN_6"],
+    ["PIN_19", "PIN_15", "PIN_11", "PIN_7"],
+    ["PIN_20", "PIN_16", "PIN_12", "PIN_8"],
+    ["PIN_21", "PIN_17", "PIN_13", "PIN_9"]
+]
+
+
+[layout]
+rows = 4
+cols = 4
+layers = 1
+keymap = [
+    [
+        ["A", "Kc1", "TD(0)", "X"],
+        ["B", "F", "G", "H"],
+        ["C", "J", "K", "L"],
+        ["D", "N", "O", "P"]
+    ]
+]
+
+[[behavior.tap_dance.tap_dances]]
+tap_actions = ["A", "B", "C"]
+hold_actions = ["Kc2", "Kc2", "Kc2", "Kc2"]
+tapping_term = "300ms"
