@@ -7,8 +7,8 @@ manufacturer = "RMK"
 chip = "rp2040"
 
 [rmk]
-tap_dance_max_num = 16
-tap_dance_max_tap = 5
+morse_max_num = 16
+max_patterns_per_key = 8
 
 [storage]
 clear_storage = true
@@ -29,14 +29,33 @@ cols = 4
 layers = 1
 keymap = [
     [
-        ["A", "Kc1", "TD(0)", "X"],
+        ["A", "TD(0)", "TD(1)", "X"],
         ["B", "F", "G", "H"],
         ["C", "J", "K", "L"],
         ["D", "N", "O", "P"]
     ]
 ]
 
-[[behavior.tap_dance.tap_dances]]
-tap_actions = ["A", "B", "C"]
-hold_actions = ["Kc2", "Kc2", "Kc2", "Kc2"]
-tapping_term = "300ms"
+
+[behavior.morse]
+hold_timeout = "300ms"
+gap_timeout = "2000ms"
+
+morses = [
+  # TD(0): numpad 1
+  { morse_actions = [
+      { pattern = "-", action = "Kc1" },
+    ]},
+  # TD(1): numpad 2
+  { morse_actions = [
+      { pattern = "-", action = "Kc2" },
+      { pattern = ".", action = "A" },
+      { pattern = ".-", action = "A" },
+      { pattern = "..", action = "B" },
+      { pattern = "..-", action = "B" },
+      { pattern = "...", action = "C" },
+      { pattern = "...-", action = "C" },
+    ]}
+]
+
+
